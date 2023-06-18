@@ -1,0 +1,2 @@
+class Addre < ApplicationRecord
+end
