@@ -1,0 +1,33 @@
+<div class="container d-flex">
+
+  <div class="col-6 d-flex">
+    <row>
+      <div class="m-3">
+        <div>
+          <h3 class="my-3"><strong><%= @item.name %></strong></h3>
+        </div>
+        <div>
+          <h4 class="my-3 pt-2"><%= @item.introduction %></h4>
+        </div>
+        <div class="d-flex align-items-end my-5">
+          <h3>￥<%= p @item.with_tax_price.to_s(:delimited) %></h3>
+          <h5>（税込）</h5>
+        </div>
+      </div>
+
+      <%= form_with model: @cart_item ,url: cart_items_path do |f| %>
+        <row class="d-flex align-items-center my-5">
+          <div class="form">
+            <%= f.hidden_field :item_id, :value => @item.id %>
+          </div>
+          <div class="form w-50">
+          <%= f.select :amount, *[1..10], {}, class: "w-50 mx-auto" %>
+          </div>
+          <div class="action w-50">
+          <%= f.submit 'カートに入れる', class: 'btn btn-success px-3' %>
+          </div>
+        </row>
+      <% end %>
+    </row>
+  </div>
+</div>
