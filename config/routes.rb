@@ -3,6 +3,20 @@ Rails.application.routes.draw do
    root to: "homes#top"
    resources :genres, only: [:index]
   end
+  
+  # 会員側のルーティング設定
+  scope module: :public do
+    resources :addresses, only:[:index, :edit, :create, :update, :destroy]
+    resources :orders, only:[:new, :index, :show, :create] do
+      collection do
+        post 'confirm'
+        get 'thanks'
+      end
+    end
+    
+    
+  end
+  
   #管理者用
   # URL /customers/sign_in...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

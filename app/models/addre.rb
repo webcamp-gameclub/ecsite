@@ -1,4 +1,4 @@
-class Address < ApplicationRecord
+class Addre < ApplicationRecord
   belongs_to :customer
   
   validates :address, presence: true
