@@ -1,0 +1,11 @@
+<div class="container d-flex">
+  <div class="col-9">
+    <div class="d-flex align-items-end m-2">
+      <h2>
+        <strong>商品一覧</strong>
+      </h2>
+      <h4>（全 <%= Item.all.count %> 件）</h4>
+    </div>
+    <%= render 'items', items: @items %>
+  </div>
+</div>

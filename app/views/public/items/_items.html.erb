@@ -1,0 +1,16 @@
+<div class="row d-flex">
+  <% items.each do |item| %>
+    <div class="item col-3" style="height: 200px">
+      <%= link_to item_path(item.id), class: 'text-decoration-none' do %>
+        <div class="text-center">
+        </div>
+        <div class="text-dark d-inline-block h-25 ">
+          <%= item.name %>
+        </div>
+        <div class="text-dark">
+          ￥<%= p item.price.to_s(:delimited) %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
