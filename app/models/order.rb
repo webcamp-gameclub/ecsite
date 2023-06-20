@@ -6,4 +6,8 @@ class Order < ApplicationRecord
   has_many :order_details, dependent: :destroy
 
   validates :postage, presence: true
+  # セレクトボタン内に1行でまとめて表示させるメソッド
+  def address_display
+    '〒' + postal_code + ' '+ address1 + ' ' + name
+  end
 end
