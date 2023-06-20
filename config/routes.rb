@@ -29,11 +29,11 @@ Rails.application.routes.draw do
         post 'confirm'
         get 'thanks'
       end
+    end
     resources :cart_items, only:[:index, :create, :update, :destroy] do
       collection do
         delete 'destroy_all'
       end
-    end
     end
 
 
