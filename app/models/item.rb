@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
  has_one_attached :image
-  has_many :carts, dependent: :destroy
+  has_many :cart_items, dependent: :destroy
+  has_many :order_details, dependent: :destroy
   
   # 消費税を含む金額
   def tax_price
