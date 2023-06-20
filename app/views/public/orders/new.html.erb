@@ -6,12 +6,12 @@
   <%= form_with model: @order, url: confirm_orders_path, method: :post, local: true do |f| %>
     <div class = "ml-4 my-2" >
       <span>
-        <%= f.radio_button :payment, Order.payments.key(1), checked: true %>
-        <%= f.label :payment_bank, Order.payments[:bank] %>
+        <%= f.radio_button :payment_method, Order.payment_methods.key(1), checked: true %>
+        <%= f.label :payment_method_bank, Order.payment_methods_i18n[:bank] %>
       </span><br>
       <span>
-        <%= f.radio_button :payment, Order.payments.key(0), checked: false %>
-        <%= f.label :payment_credit, Order.payments[:credit] %>
+        <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: false %>
+        <%= f.label :payment_method_credit, Order.payment_methods_i18n[:credit] %>
       </span>
     </div>
     <strong>お届け先</strong>

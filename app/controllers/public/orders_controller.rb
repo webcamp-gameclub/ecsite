@@ -7,7 +7,6 @@ class Public::OrdersController < ApplicationController
       @addresses = current_customer.addresses
     # カートの中に商品がない場合オーダーには進めない
     else
-    #今現在のページ
     redirect_to cart_items_path
     end
   end
@@ -33,9 +32,7 @@ class Public::OrdersController < ApplicationController
   def confirm
     # @orderはでかい箱で、その中に小さい箱を指定するためにストロングパラメーターを指定している。
     @order = Order.new(order_params)
-      # if文を記述して、hidden fieldが作動するようにする。
       # ご自身の住所と配送先住所が選択された場合はhiddenで処理
-      # 現在memberに登録されている住所であれば
     if params[:order][:address_option] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address1 = current_customer.address
