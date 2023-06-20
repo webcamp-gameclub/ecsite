@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :admin do
    root to: "homes#top"
    resources :items, only: [:index, :show, :new, :create, :edit, :update]
-   resources :genres, only: [:index, :create, :edit, :update]
+   resources :genres, only: [:index]
    resources :orders, only: [:show]
   end
   
@@ -16,6 +16,15 @@ Rails.application.routes.draw do
       end
     end
     
+    resources :cart_items, only:[:index, :create, :update, :destroy] do
+      collection do
+        delete 'destroy_all'
+      end
+    end
+    
+    root to: 'homes#top'
+    get 'about',to: 'homes#about'
+    resources :items, only: [:index, :show]
     
   end
   
@@ -32,10 +41,6 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
-  scope module: :public do
-    root to: 'homes#top'
-    get 'about',to: 'homes#about'
-    resources :items, only: [:index, :show]
-  end
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
