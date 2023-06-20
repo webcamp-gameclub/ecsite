@@ -1,46 +1,45 @@
 Rails.application.routes.draw do
-  namespace :admin do
-   root to: "homes#top"
-   resources :items, only: [:index, :show, :new, :create, :edit, :update]
-   resources :genres, only: [:index]
-   resources :orders, only: [:show]
-  end
-  
-  # 会員側のルーティング設定
-  scope module: :public do
-    resources :addresses, only:[:index, :edit, :create, :update, :destroy]
-    resources :orders, only:[:new, :index, :show, :create] do
-      collection do
-        post 'confirm'
-        get 'thanks'
-      end
-    end
-    
-    resources :cart_items, only:[:index, :create, :update, :destroy] do
-      collection do
-        delete 'destroy_all'
-      end
-    end
-    
-    root to: 'homes#top'
-    get 'about',to: 'homes#about'
-    resources :items, only: [:index, :show]
-    
-  end
-  
   #管理者用
   # URL /customers/sign_in...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
 
+  namespace :admin do
+   root to: "homes#top"
+   resources :items, only: [:index, :show, :new, :create, :edit, :update]
+   resources :genres, only: [:index]
+   resources :orders, only: [:show]
+  end
 
-  #顧客用
+ #顧客用
   devise_for :customers, skip: [:password], controllers: {
-    registarations: "public/registarations",
+    registrations: "public/registrations",
     sessions: 'public/sessions'
   }
 
-  
+  # 会員側のルーティング設定
+  scope module: :public do
+    root to: 'homes#top'
+    get 'about',to: 'homes#about'
+    resources :items, only: [:index, :show]
+    resources :addresses, only:[:index, :edit, :create, :update, :destroy]
+    resources :orders, only:[:new, :index, :show, :create] do
+      collection do
+        post 'confirm'
+        get 'thanks'
+      end
+    resources :cart_items, only:[:index, :create, :update, :destroy] do
+      collection do
+        delete 'destroy_all'
+      end
+    end
+    end
+
+
+
+
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
