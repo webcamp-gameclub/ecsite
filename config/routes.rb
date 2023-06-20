@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   namespace :admin do
    root to: "homes#top"
+   resources :items, only: [:index, :show, :new, :create, :edit, :update]
    resources :genres, only: [:index]
+   resources :orders, only: [:show]
   end
   
   # 会員側のルーティング設定
