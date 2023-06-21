@@ -2,9 +2,6 @@
   <div class="title pt-4 ml-5 col-2">
     <h4 class="text-center bg-light">ジャンル一覧・追加</h4>
   </div>
-  <div>
-  <%= flash[:success] %>
-  </div>
   <%= form_with model: @new_genre, url: admin_genres_path do |f| %>
     <div class="row pt-5">
       <div class="form-group col-1">
