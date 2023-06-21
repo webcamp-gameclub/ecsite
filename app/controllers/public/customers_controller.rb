@@ -9,6 +9,11 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
+    if @customer.update(customer_params)
+      redirect_to mypage_path, notice: '会員情報の更新が完了しました。'
+    else
+      render :edit
+    end
   end
 
   def unsubscribe
