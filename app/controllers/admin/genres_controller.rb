@@ -18,8 +18,8 @@ class Admin::GenresController < ApplicationController
   end 
   
   def update
-    @genre = Genre.find(params[:id])
-    if @genre.update(genre_params)
+    genre = Genre.find(params[:id])
+    if genre.update(genre_params)
       flash[:success] = "ジャンルを編集しました。"
       redirect_to admin_genres_path
     else 
@@ -28,7 +28,9 @@ class Admin::GenresController < ApplicationController
   end 
   
   private
+  
   def genre_params
     params.require(:genre).permit(:name)
   end 
+  
 end
