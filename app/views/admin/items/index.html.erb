@@ -1,8 +1,11 @@
 <div class="container">
   <div class="row mt-4">
     <div class="col-md-3 col-sm-3">
-        <h4 class="text-center">商品一覧</h4>
+       <h4 class="ml-5 mb-5"><span class="title-custom px-4">商品一覧</span></h4>
         </div>
+        <div class="col-2 justify-content-end">
+         <%= link_to "追加",new_admin_item_path, class: "btn btn-outline-primary" %>
+          </div>
  <table class="table table-striped">
      <tr>
      <th>商品ID</th>
@@ -17,6 +20,7 @@
  <td><%= link_to item.name, admin_item_path(item) %></td>
  <td><%= item.price %></td>
  <td><%= item.genre_id %></td>
+ <td></td>
  </tr>
 <%end%> 
 </table>

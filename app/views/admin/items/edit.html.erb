@@ -1,13 +1,12 @@
-<div>
-  <%= flash[:notice] %>
-</div>
 <div class="container">
   <div class="mt-4">
     <div class="text-center">
-        <h2>商品編集</h2>
+      <%= render 'layouts/errors', obj: @item %>
+       <h5 class="ml-5 mb-5"><span class="title-custom px-4">商品編集</span></h5>
           <div class="table-responsive">
                 <table class="col-10 mt-5 mx-auto">
-        <%= form_with model: @item, url: admin_item_path(@item), method: :patch do |f| %>
+        <%#= form_with model: @item, url: admin_item_path(@item), method: :patch do |f| %>
+         <%= form_with model: [:admin, @item], url: admin_item_path do |f| %>
        <tr> <th>商品画像</th>
          <td><%= f.file_field :image, accept: "image/*" %></td></tr>
         <tr>
@@ -20,13 +19,13 @@
           <td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択してください" %></td>
         </tr>
         <tr><th><%= f.label :"税抜き価格" %></th>
-        <td><%= f.text_field :price %></td></tr>
+        <td><%= f.text_field :price %>円</td></tr>
         <tr><th><%= f.label :"販売ステータス"%></th>
         <td></td></tr>
     
         </table>
          <div class="text-center">
-        <%= f.submit "保存" %>
+        <%= f.submit "編集を保存", class:"btn btn-success"%>
       </div>
         
         <% end %>
