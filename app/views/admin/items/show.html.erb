@@ -28,7 +28,9 @@
        <tr> <th>税抜き価格</th>
         <td><%= number_with_delimiter(@item.price) %>円</td></tr> 
        <tr> <th>販売ステータス</th>
-        <td></td></tr> 
+        <td><% if @item.is_selled %>販売中
+            <% else %>販売停止中
+            <% end %></td></tr> 
        
   </table>
   </div>
