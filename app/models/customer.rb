@@ -5,6 +5,8 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :addresses, dependent: :destroy
+  
+  scope :only_active, -> { where(is_deleted: false) }
 
 
   validates :last_name, presence: true
