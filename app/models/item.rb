@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   validates :genre_id, presence: true
   validates :price, presence: true
   belongs_to :genre
-  
+
   # 消費税を含む金額
   def tax_price
     (price * 1.1).floor
