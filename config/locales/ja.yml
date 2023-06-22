@@ -17,7 +17,7 @@ ja:
           making: "制作中"
           complete: "制作完了"
       item:
-        sales_status:
+        is_selled:
           sold_out: "売切れ"
           sale: "販売中"   
 
