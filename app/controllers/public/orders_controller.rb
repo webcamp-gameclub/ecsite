@@ -15,7 +15,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     if @order.save
       # カートの情報をオーダーディティールに複製
-      current_customer.carts.each do |cart|
+      current_customer.cart_items.each do |cart_item|
         order_detail = OrderDetail.new()
         order_detail.order_id = @order.id
         order_detail.item_id = cart_item.item_id
@@ -24,7 +24,7 @@ class Public::OrdersController < ApplicationController
         order_detail.save
       end
       # カートの中身を削除
-      current_customer.carts.destroy_all
+      current_customer.cart_items.destroy_all
       redirect_to thanks_orders_path
     end
   end

@@ -2,7 +2,7 @@
   <%= flash[:notice] %>
   <%= flash[:alert] %>
 <div class = "ml-5">
-  <h5 class = "ml-5 my-4"><strong>配送先登録/一覧</strong></h5>
+  <h5 class = "ml-5 my-4"><strong style="background-color:#EEEEEE;">配送先登録/一覧</strong></h5>
   <%= form_with model: @address do |f| %>
     <table>
     <%= f.hidden_field :customer_id, :value => current_customer.id %>
