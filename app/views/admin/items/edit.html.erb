@@ -24,10 +24,10 @@
         <td><%= f.text_field :price %>円</td></tr>
         <tr>
          <th><%= f.label :"販売ステータス"%></th>
-        <td><%= f.radio_button :is_selled, "true" %>
-            <%= f.label :is_selled, "販売中" %>
-    <%= f.radio_button :is_selled, "false" %>
-    <%= f.label :is_selled, "販売停止中" %></td></tr>
+        <td><%= f.radio_button :is_selled, Item.is_selleds.key(true) %>
+            <%= f.label :is_selled_sale, Item.is_selleds_i18n[:sale] %>
+            <%= f.radio_button :is_selled, Item.is_selleds.key(false) %>
+            <%= f.label :is_selled_sold_out, Item.is_selleds_i18n[:sold_out] %></td></tr>
        </table>
        <!--保存ボタン-->
          <div class="text-center">
