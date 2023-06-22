@@ -1,5 +1,10 @@
 <div class="container d-flex">
-
+  <div class="sidebar">
+    <h3>ジャンル一覧</h3>
+    <% @genres.each do |genre| %>
+      <%= link_to genre.name, items_path(genre_id: genre.id) %>
+    <% end %>
+  </div>
 
   <div class="col-lg-9">
     <row>
@@ -17,11 +22,10 @@
       <h2>新着商品</h2>
     </div>
 
-    <% if customer_signed_in? %>
-      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+    <%= render 'public/items/items', items: @items %>
+
+    <%=link_to items_path do %>
+     <p class="text-right">全ての商品を見る　＞</p>
     <% end %>
-
-
-
   </div>
 </div>

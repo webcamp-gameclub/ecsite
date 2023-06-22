@@ -28,11 +28,9 @@
        <tr> <th>税抜き価格(税込価格)</th>
         <td>￥<%= p @item.price.to_s(:delimited) %>(<%= @item.tax_price %>)円</td></tr>
        <tr> <th>販売ステータス</th>
-        <td><% if @item.is_selled == "sale" %>
-          <p style = "color: #4ec51e;">販売中</p>
-        <% else %>
-          <p style = "color: #ff3838;">売切れ</p>
-        <% end %></td></tr>
+        <td><% if @item.is_selled %>販売中
+            <% else %>販売停止中
+            <% end %></td></tr>
 
   </table>
   </div>

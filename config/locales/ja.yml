@@ -19,7 +19,7 @@ ja:
       item:
         is_selled:
           sold_out: "売切れ"
-          sale: "販売中"   
+          sale: "販売中"
 
     devise:
       failure:
