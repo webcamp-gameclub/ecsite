@@ -28,7 +28,6 @@ Rails.application.routes.draw do
     get 'customers/quit' => 'customers#quit', as: 'confirm_quit'
     put 'customers/information' => 'customers#update'
     patch 'customers/out' => 'customers#out', as: 'out_customer'
-
     get 'about',to: 'homes#about'
     resources :items, only: [:index, :show]
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
