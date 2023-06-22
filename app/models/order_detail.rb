@@ -6,6 +6,6 @@ class OrderDetail < ApplicationRecord
 
   # アイテム毎の小計を算出
   def total_price
-    item_price.to_i * quantity.to_i
+    subprice.to_i * quantity.to_i
   end
 end

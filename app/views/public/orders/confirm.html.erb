@@ -13,11 +13,11 @@
       <% @cart_items.each do |cart_item| %>
         <tr>
           <td>
-            <%= image_tag cart_item.item.get_image(100,70), class: "cart-item-image", style: "margin: auto;" %>
+            
             <strong class = "ml-2" ><%= cart_item.item.name %></strong>
           </td>
           <td class = "pr-4 pl-2"><%= cart_item.item.tax_price.to_s(:delimited) %></td>
-          <td class = "pr-5 pl-2"><%= cart_item.count %></td>
+          <td class = "pr-5 pl-2"><%= cart_item.amount %></td>
           <td class = "pr-4 pl-2">
             <%= cart_item.subtotal.to_s(:delimited) %>
           </td>
