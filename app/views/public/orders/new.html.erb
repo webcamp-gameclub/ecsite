@@ -1,7 +1,7 @@
 <!--フラッシュ表示-->
 <%= flash[:notice] %>
 <div class = "container">
-  <h5 class = "ml-4 my-4" >注文情報入力画面</h5>
+  <h5 class = "ml-4 my-4" ><strong style="background-color:#EEEEEE;">注文情報入力画面</strong></h5>
   <strong>支払方法</strong><br>
   <%= form_with model: @order, url: confirm_orders_path, method: :post, local: true do |f| %>
     <div class = "ml-4 my-2" >
