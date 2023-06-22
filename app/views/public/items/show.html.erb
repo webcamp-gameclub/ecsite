@@ -14,20 +14,22 @@
           <h5>（税込）</h5>
         </div>
       </div>
-
+    <% if customer_signed_in? && @item.is_selled == "sale" %>
       <%= form_with model: @cart_item do |f| %>
-        <row class="d-flex align-items-center my-5">
-          <div class="form">
-            <%= f.hidden_field :item_id, :value => @item.id %>
-          </div>
-          <div class="form w-50">
-          <%= f.select :amount, *[1..10], {}, class: "w-50 mx-auto" %>
-          </div>
-          <div class="action w-50">
-          <%= f.submit 'カートに入れる', class: 'btn btn-success px-3' %>
-          </div>
-        </row>
+        <%= f.hidden_field :customer_id, :value => current_customer.id %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <p class = "pt-3">
+        <%= f.submit "カートに入れる"%>
+        <%= f.select :amount, *[1..10] %>
+        </p>
+        <% end %>
+      <% else %>
+        <% if @item.is_selled == "sale" %>
+          <p style = "color: #63ed01;">販売中</p>
+        <% else %>
+          <p style = "color: #ff89b1;">売切れ</p>
       <% end %>
+    <% end %>
     </row>
   </div>
 </div>

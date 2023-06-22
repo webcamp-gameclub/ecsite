@@ -10,7 +10,7 @@ class Public::CartItemsController < ApplicationController
     if current_customer.cart_items.find_by(item_id: @cart_item.item_id)
       cart_item = current_customer.cart_items.find_by(item_id: @cart_item.item_id)
       # 数量を加算
-      cart_item.count += @cart_item.count.to_i
+      cart_item.amount += @cart_item.amount.to_i
       cart_item.save
       redirect_to cart_items_path
     # 同じ商品がない場合、そのまま保存
