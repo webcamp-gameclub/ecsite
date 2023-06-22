@@ -26,4 +26,25 @@
         </td>
       </tr>
     </table>
+    <% @order_items.each do |order_item| %>
+      <%= form_with model: order_item, method: :patch do |f| %>
+        <table class="table">
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>制作ステータス</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td><%= order_item.item.name %></td>
+            <td><%= order_item.item.tax_price %></td>
+            <td><%= order_item.order_details.quantity %></td>
+            <td><%= order_item.order_details.total_price %></td>
+            <td><%= f.select :making_status, order_item.making_statuses.keys.map {|k| [I18n.t("enums.order_item.making_statuses.#{k}"), k]} %></td>
+            <td><%= f.submit "更新", class: "btn btn-success" %></td>
+          </tr>
+        </table>
+        
 </div>
