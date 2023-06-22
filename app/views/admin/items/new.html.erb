@@ -4,7 +4,7 @@
   <div class="row">
   <div class="col-10 mx-auto">
   <h5 class="ml-5 mb-5"><span class="title-custom px-4">新規商品登録</span></h5>
-    
+
 <table class="table table-borderless">
     <%= render 'layouts/errors', obj: @item %>
   <div class="col-8 mx-auto form-group">
@@ -13,9 +13,9 @@
 <td><%= f.file_field :image, accept: "image/*" %></td>
 </tr>
 <tr>
-    <td>商品名</td> 
+    <td>商品名</td>
  <td> <%= f.text_field :name, placeholder:"商品名を入力してください", class: "form-control" %></td></tr>
- <tr> 
+ <tr>
     <td>商品説明</td>
  <td> <%= f.text_area :description, placeholder:"説明文を入力してください", class: "form-control"%></td></tr>
  <tr>
@@ -24,7 +24,7 @@
 <tr>
     <td>税抜き価格</td>
 <td> <%= f.text_field :price, placeholder:"金額を入力してください", class: "form-control" %></td></tr>
-<tr>	
+<tr>
     <td>販売ステータス</td>
 <td><%= f.radio_button :is_selled, "true" %>
     <%= f.label :is_selled, "販売中" %>
