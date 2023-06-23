@@ -6,45 +6,77 @@
     <table class="table table-borderless">
       <tr>
         <th class="col-3">購入者</th>
-        <td class="col-9">
-          <%= link_to admin_customer_path(customer.id) do %>
-          <%=@order.customer_name %>
-          <% end %>
-        </td>
+        <td class="col-9"><%=@order.customer.customer_name %></td>
+      </tr>
+      
+      <tr>
         <th class="col-3">注文日</th>
-        <td cladd="col-9"><%= @order.create_at %></td>
+        <td cladd="col-9"><%= @order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+      </tr>
+      <tr>
         <th class="col-3">配送先</th>
         <td class="col-9"><%= @order.address1 %></td>
+      </tr>
+      <tr>
         <th class="col-3">支払方法</th>
-        <td class="col-9"><%= @order.payment_method %></td>
+        <td class="col-9"><%= @order.payment_method_i18n %></td>
+      </tr>
+      <tr>
         <th class="col-3">注文ステータス</th>
         <td class="col-9">
-          <%= form_with model: @order, method: :patch do |f| %>
-            <%= f.select :order_status, @order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_statuses.#{k}"), k]} %>
+          <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
+            <%= f.select :order_status, Order.order_statuses_i18n.invert %>
             <%= f.submit "更新", class: "btn btn-success" %>
           <% end %>
         </td>
       </tr>
     </table>
-    <% @order_items.each do |order_item| %>
-      <%= form_with model: order_item, method: :patch do |f| %>
+    <div class="row">
+      <div class="col-12">
         <table class="table">
+          <thead>
+            <tr>
+              <th>商品名</th>
+              <th>単価（税込）</th>
+              <th>数量</th>
+              <th>小計</th>
+              <th>制作ステータス</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <% @order_details.each do |order_detail| %>
+                <%= form_with model: order_detail, url: admin_order_detail_path, method: :patch do |f| %>
+                  <td><%= order_detail.item.name %></td>
+                  <td><%= order_detail.item.tax_price %></td>
+                  <td><%= order_detail.quantity %></td>
+                  <td><%= order_detail.total_price %></td>
+                  <td><%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %></td>
+                  <td><%= f.submit "更新", class: "btn btn-success" %></td>
+              </tr>
+              <% end %>
+            <% end %>
+            </tbody>
+          </table>
+      </div>    
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <table class="tabel tabel-borderless">
           <tr>
-            <th>商品名</th>
-            <th>単価（税込）</th>
-            <th>数量</th>
-            <th>小計</th>
-            <th>制作ステータス</th>
-            <th></th>
+            <th>商品合計</th>
+            <td><%= @product_total %>円</td>
           </tr>
           <tr>
-            <td><%= order_item.item.name %></td>
-            <td><%= order_item.item.tax_price %></td>
-            <td><%= order_item.order_details.quantity %></td>
-            <td><%= order_item.order_details.total_price %></td>
-            <td><%= f.select :making_status, order_item.making_statuses.keys.map {|k| [I18n.t("enums.order_item.making_statuses.#{k}"), k]} %></td>
-            <td><%= f.submit "更新", class: "btn btn-success" %></td>
+            <th>送料</th>
+            <td><%= @order.postage %>円</td>
+          </tr>
+          <tr>
+            <th>請求金額合計</th>
+            <td><%= @order.billing_amount %>円</td>
           </tr>
         </table>
-        
+      </div>  
+    </div>  
 </div>
