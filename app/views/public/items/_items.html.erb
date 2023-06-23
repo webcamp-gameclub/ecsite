@@ -3,6 +3,7 @@
     <div class="item col-3" style="height: 200px">
       <%= link_to item_path(item.id), class: 'text-decoration-none' do %>
         <div class="text-center">
+          <%= image_tag item.get_image(200,200) %>
         </div>
         <div class="text-dark d-inline-block h-25 ">
           <%= item.name %>
