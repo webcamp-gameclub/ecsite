@@ -15,11 +15,14 @@
         </td>
         <td><%= order.name %></td>
         <td><%= order.order_details.sum(:quantity) %></td>
-        <td><%= order.status %></td>
+        <td><%= order.order_status %></td>
         </tr>
         <% end %>
   </table>
   </div>
+  </div>
+   <div class="pagination d-flex justify-content-center mb-4">
+    <%= paginate @orders %>
   </div>
   </div>
   

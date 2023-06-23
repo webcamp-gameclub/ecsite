@@ -26,10 +26,10 @@
 <td> <%= f.text_field :price, placeholder:"金額を入力してください", class: "form-control" %></td></tr>
 <tr>
     <td>販売ステータス</td>
-<td><%= f.radio_button :is_selled, Item.is_selleds.key(true), checked: true %>
-    <%= f.label :is_selled_sale, Item.is_selleds_i18n[:sale] %>
-    <%= f.radio_button :is_selled, Item.is_selleds.key(false), checked: false %>
-    <%= f.label :is_selled_sold_out, Item.is_selleds_i18n[:sold_out] %></td></tr>
+<td><%= f.radio_button :is_selled, "true" %>
+    <%= f.label :is_selled, "販売中" %>
+    <%= f.radio_button :is_selled, "false" %>
+    <%= f.label :is_selled, "販売停止中" %></td></tr>
     <!--登録ボタン-->
   <td><%= f.submit '新規登録' ,class:"btn btn-success" %></td>
   </table>
