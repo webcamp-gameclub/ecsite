@@ -48,8 +48,8 @@ class Public::OrdersController < ApplicationController
       end
     # 新規住所入力であれば
     elsif params[:order][:address_option] == "2"
-      @order.postal_code = params[:order][:postal_code]
-      @order.address1 = params[:order][:address1]
+      @order.postal_code = params[:order][:pastal_code]
+      @order.address1 = params[:order][:address]
       @order.name = params[:order][:name]
     else
       render 'new'
