@@ -2,6 +2,7 @@
   <div class="row mt-4">
     <div class="col-md-3 col-sm-3">
        <h4 class="ml-5 mb-5"><span class="title-custom px-4">商品一覧</span></h4>
+       
         </div>
         <div class="col-2 justify-content-end">
          <%= link_to "追加",new_admin_item_path, class: "btn btn-outline-primary" %>
@@ -27,6 +28,16 @@
         <% end %></td>
  </tr>
 <%end%>
+
 </table>
+
          </div>
+         <div class="pagination d-flex justify-content-center mb-4">
+    <%= paginate @items %>
+  </div>
+       
+ 
  </div>
+
+ 
+ 
