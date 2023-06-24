@@ -8,7 +8,7 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.integer :postage
       t.integer :billing_amount
       t.integer :payment_method
-      t.integer :order_status
+      t.integer :order_status, default:0
 
       t.timestamps
     end
