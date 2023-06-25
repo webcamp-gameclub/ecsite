@@ -23,7 +23,8 @@ class Admin::CustomersController < ApplicationController
       render :edit
     end 
   end
-
+  
+  
   private
 
   def customer_params
