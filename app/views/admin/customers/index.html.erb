@@ -1,38 +1,45 @@
-<div class="customer-group ml-5">
-  <div class="title pt-5 ml-5">
-    <h3 class="text-center bg-light col-2">会員一覧</h3>
+<div class="container">
+  <div class="row pt-5 pl-5 ml-5">
+    <div class="customer-group">
+      <div class="title">
+        <h3 class="text-center bg-light">会員一覧</h3>
+      </div>
+    </div>
   </div>
-  <div class="row pl-5 pr-5 pt-3"></div>
-  <table class="table col-5">
-    <thead class="bg-light text-center">
-      <tr>
-        <th>会員ID</th>
-        <th>氏名</th>
-        <th>メールアドレス</th>
-        <th>ステータス</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @customers.each do |customer| %>
-        <tr class="text-center">
-          <td><%= customer.id %></td>
-          <td>
-            <%= link_to admin_customer_path(customer.id) do %>
+    <div class="row pt-5 justify-content-center">
+      <div class="col-9">
+        <table class="table">
+          <thead class="bg-light text-center">
+            <tr>
+              <th>会員ID</th>
+              <th>氏名</th>
+              <th>メールアドレス</th>
+              <th>ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @customers.each do |customer| %>
+            <tr class="text-center">
+              <td><%= customer.id %></td>
+              <td>
+              <%= link_to admin_customer_path(customer.id) do %>
               <%= "#{customer.first_name}#{customer.last_name}" %>
-            <% end %>
-          </td>
-          <td><%= customer.email %></td>
-          <% if customer.is_deleted == false %>
-            <td class="text-success">有効</td>
-          <% else %>
-            <td class="text-secondary">退会</td>
+              <% end %>
+              </td>
+              <td><%= customer.email %></td>
+              <% if customer.is_deleted == false %>
+                <td class="text-success">有効</td>
+              <% else %>
+                <td class="text-secondary">退会</td>
+              <% end %>
+            </tr>
           <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="pagination d-flex justify-content-center mb-4">
+      <%= paginate @customers %>
+    </div>
 </div>
- <div class="pagination d-flex justify-content-center mb-4">
-    <%= paginate @customers %>
-  </div>
-</div>
+  
