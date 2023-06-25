@@ -40,8 +40,8 @@
                     style="background-color: #003366; text-decoration: none;">
                     <%= image_tag item.get_image(150,150), class: "item-image-card mt-1 mx-auto" %><br>
                     <div class ="card-body" style="background-color: #003366;">
-                    <strong class = "gold card-title"><%= item.name %></strong>
-                      <p class="gold card-text">¥<%= item.tax_price.to_s(:delimited) %></p>
+                    <p style = "color: #ffffff;"><strong class = "gold card-title"><%= item.name %></strong></p>
+                      <p style = "color: #ffffff;">¥<%= item.tax_price.to_s(:delimited) %></p>
                     </div>
                     <% if item.is_selled == "sale" %>
           <p style = "color: #ffffff;">販売中</p>
