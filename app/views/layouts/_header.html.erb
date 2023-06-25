@@ -15,7 +15,6 @@
 
         <!--会員ログイン後ヘッダー-->
         <% if customer_signed_in? %>
-        <h5 class="mb-0", style= "color: #f0f8ff" >〜ようこそ、<%= current_customer.first_name %><%= current_customer.last_name %>さん〜</h5>
         <li class="nav-item">
             <%= link_to "マイページ",mypage_path, class: 'nav-link text-dark btn btn-light ml-5' %>
         </li>
@@ -28,9 +27,16 @@
         <li class="nav-item">
             <%= link_to "ログアウト",destroy_customer_session_path, method: :delete, class: 'nav-link text-dark btn btn-light ml-2' %>
         </li>
+        <li>
+        <div class="search_form serch_inner ml-2">
+      <%= form_with url: searches_search_path, local: true, method: :get do |f| %>
+        <%= f.text_field :word, placeholder:"商品検索"%>
+        <%= f.submit "検索",class: "btn btn-info"  %>
+      <% end %>
+      </div>
+      </li>
             <!--管理者ログイン後ヘッダー-->
         <% elsif admin_signed_in? %>
-        <h5 class="mb-0", style= "color: #f0f8ff" >〜管理者ログイン中〜</h5>
         <li class="nav-item">
             <%= link_to "注文履歴一覧", admin_root_path, class: 'nav-link text-dark btn btn-light ml-5' %>
         </li>
@@ -46,6 +52,12 @@
         <li class="nav-item">
             <%= link_to "ログアウト",destroy_admin_session_path, method: :delete, class: 'nav-link text-dark btn btn-light ml-2' %>
         </li>
+        <li> <div class="search_form serch_inner ml-2">
+      <%= form_with url: searches_search_path, local: true, method: :get do |f| %>
+        <%= f.text_field :word, placeholder:"顧客検索"%>
+        <%= f.submit "検索",class: "btn btn-info"  %>
+      <% end %>
+      </li>
             <% else %>
             <!--共通ログイン前ヘッダー-->
         <li class="nav-item">
@@ -64,6 +76,8 @@
             <%= link_to "管理者ログイン",new_admin_session_path, class: 'nav-link text-dark btn btn-light ml-2' %>
         </li>
               <% end %>
+              
+              
         </ul>
         </nav>
         </div>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
+   get 'searches/search'
 
   namespace :admin do
    root to: "homes#top"
