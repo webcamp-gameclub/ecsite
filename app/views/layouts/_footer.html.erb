@@ -2,10 +2,13 @@
       <div class="container">
               <div class='row justify-content-center'>
                   <div class='mx-auto'>
+                        <% if admin_signed_in? %>
+                         <p> 管理者ログイン中...</p>
+                          <% end %>
             <p>Ngano.cake</p>
-            </div>
+     
           </div>
-             
+</div>
       </div>
     </footer>
   </body>
