@@ -1,0 +1,13 @@
+<div class ="mt-5" style="background-color: #c0c0c0;">
+ <div style ="border:solid 1px;">
+  <div style ="border-bottom: solid 1px;">
+    <h5 style="text-align: center; line-height:40px;">ジャンル検索</h5>
+    </div>
+    <div></div>
+    <% genres.each do |genre| %>
+      <%= link_to index_path(genre.id) do %>
+      <h5 class ="btnsub" style ="color: #003366; width: 100%"><%= genre.name %></h5><br>
+      <% end %>
+    <% end %>
+    </div>
+</div>

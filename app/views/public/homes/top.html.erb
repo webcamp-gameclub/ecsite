@@ -1,15 +1,9 @@
-<div class="container d-flex">
-  <div class="sidebar">
-    <h3>ジャンル一覧</h3>
-    <% @genres.each do |genre| %>
-      <div class="col-md-6">
-        <%= link_to genre.name, items_path(genre_id: genre.id) %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="col-lg-9">
-    <row>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <%= render 'genre', genres: @genres %>
+    </div>
+    <div class="col-lg-9">
       <div class="container">
         <p class="h5 font-weight-bold text-center">
           ようこそ、ながのCAKEへ！<br>
@@ -18,16 +12,16 @@
           購入には会員登録が必要になります。
         </p>
       </div>
-    </row>
 
-    <div>
-      <h2>新着商品</h2>
+      <div>
+        <h2>新着商品</h2>
+      </div>
+
+      <%= render 'public/items/items', items: @items %>
+
+      <%=link_to items_path do %>
+       <p class="text-right">全ての商品を見る　＞</p>
+      <% end %>
     </div>
-
-    <%= render 'public/items/items', items: @items %>
-
-    <%=link_to items_path do %>
-     <p class="text-right">全ての商品を見る　＞</p>
-    <% end %>
   </div>
 </div>
