@@ -11,10 +11,10 @@ class Public::AddressesController < ApplicationController
   def create
     @address = Address.new(address_params)
     if @address.save
-      flash[:notice] = "配送先を登録しました"
+      flash[:success] = "配送先を登録しました"
        redirect_to addresses_path
     else
-      flash[:alert] = "追加に失敗しました"
+      flash[:danger] = "追加に失敗しました"
       @address = Address.new
       @addresses = Address.all
       render :index
@@ -24,10 +24,10 @@ class Public::AddressesController < ApplicationController
   def update
     @address = Address.find(params[:id])
     if @address.update(address_params)
-      flash[:notice] = "配送先を編集しました"
+      flash[:success] = "配送先を編集しました"
       redirect_to addresses_path
     else
-      flash[:alert] = "編集に失敗しました"
+      flash[:danger] = "編集に失敗しました"
       render :edit
     end
   end

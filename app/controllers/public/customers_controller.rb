@@ -10,7 +10,7 @@ class Public::CustomersController < ApplicationController
 
   def update
     if @customer.update(customer_params)
-      redirect_to mypage_path, notice: '会員情報の更新が完了しました。'
+      redirect_to mypage_path, success: '会員情報の更新が完了しました。'
     else
       render :edit
     end
