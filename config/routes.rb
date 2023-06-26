@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     put 'customers/information' => 'customers#update'
     patch 'customers/out' => 'customers#out', as: 'out_customer'
     get 'about',to: 'homes#about'
+    get '/genre/:id' =>'homes#index', as: 'index'
     resources :items, only: [:index, :show]
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
     resources :orders, only:[:new, :index, :show, :create] do
