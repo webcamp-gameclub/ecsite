@@ -1,22 +1,22 @@
-<div class="container d-flex">
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+     
+    </div>
+    <div class='col-md-5 mt-5 ml-5'>
+      <%= image_tag @item.get_image(200,200), class: "shadow p-3 mb-5 bg-white", style: "margin: auto;" %>
+    </div>
 
-  <div class="col-6 d-flex">
-    <row>
-      <div class="m-3">
-        <%= image_tag @item.get_image(200,200) %>
-        <div>
-          <h3 class="my-3"><strong><%= @item.name %></strong></h3>
-        </div>
-        <div>
-          <h4 class="my-3 pt-2"><%= @item.description %></h4>
-        </div>
-        <div class="d-flex align-items-end my-5">
-          <h3>￥<%= p @item.tax_price.to_s(:delimited) %></h3>
-          <h5>（税込）</h5>
-        </div>
+    <div class= "col-md-4 mt-5">
+      <div class = "item_cd" style = "background-color: #003366;">
+        <p><strong style = "color: #ffffff;"><%= @item.name %></strong></p></br>
+        <p style = "color: #ffffff;"><%= @item.description %></p>
+        <p style = "color: #ffffff;">¥<%= @item.tax_price.to_s(:delimited)%>（税込)</p>
       </div>
-    <% if customer_signed_in? && @item.is_selled == "sale" %>
-      <%= form_with model: @cart_item do |f| %>
+
+
+      <% if customer_signed_in? && @item.is_selled == "sale" %>
+        <%= form_with model: @cart_item do |f| %>
         <%= f.hidden_field :customer_id, :value => current_customer.id %>
         <%= f.hidden_field :item_id, :value => @item.id %>
         <p class = "pt-3">
@@ -26,11 +26,12 @@
         <% end %>
       <% else %>
         <% if @item.is_selled == "sale" %>
-          <p style = "color: #63ed01;">販売中</p>
+          <p style = "color: #ffffff;">販売中</p>
         <% else %>
-          <p style = "color: #ff89b1;">売切れ</p>
+          <p style = "color: #ff3838;">売切れ</p>
+        <% end %>
       <% end %>
-    <% end %>
-    </row>
+
+    </div>
   </div>
 </div>
