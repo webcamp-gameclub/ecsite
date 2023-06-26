@@ -58,7 +58,7 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
       # 郵便番号（ハイフンなし7桁）、配送先住所、配送先氏名が入力されてたらture
       unless @order.postal_code =~ /\A[0-9]{7}\z/ && !@order.address1.empty? && !@order.name.empty?
-       flash[:notice] = "・郵便番号が正しくありません、または未入力の項目があります"
+       flash[:danger] = "・郵便番号が正しくありません、または未入力の項目があります"
        redirect_to request.referer
       end
   end

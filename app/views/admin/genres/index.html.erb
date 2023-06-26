@@ -6,11 +6,7 @@
       </div>
     </div>
   </div>
-  <div>
-    <%= flash[:success] %>
-    <%= flash[:alert] %>
-  </div>
-      <%= form_with model: @new_genre, url: admin_genres_path do |f| %>
+    <%= form_with model: @new_genre, url: admin_genres_path do |f| %>
       <div class="row pt-5">
         <div class="form-group">
           <%= f.label :ジャンル名 %>

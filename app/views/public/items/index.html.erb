@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
-  <div class="col-md-2">
+    <div class="col-md-2">
       <%= render 'public/homes/genre', genres: @genres %>
     </div>
-    <div class ="col-md-10">
-      <div class ="row ml-2">
+    <div class="col-md-10">
+      <div class="row ml-2">
       <h2>
         <strong>商品一覧</strong>
       </h2>
@@ -13,7 +13,7 @@
     <%= render 'items', items: @items %>
   </div>
 </div>
-<div class="pagination d-flex justify-content-center mb-7">
+  <div class="pagination d-flex justify-content-center mb-7">
     <%= paginate @items %>
   </div>
 </div>

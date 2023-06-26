@@ -2,9 +2,6 @@
   <div class="row">
     <div class="col-10 mx-auto">
       <h4>ログイン</h4>
-      <% if flash[:danger] %>
-        <p class="text-red"><%= flash[:danger] %></p>
-      <% end %>
 
        <%= form_with model: @customer, url: session_path(resource_name), local: true do |f| %>
         <div class="field mb2">
